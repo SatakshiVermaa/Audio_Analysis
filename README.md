@@ -1,7 +1,6 @@
 # **Speech Analysis Pipeline - Process Flow**
 
-C:\Users\bajar\AppData\Local\Microsoft\Windows\INetCache\IE\02JQTY7D\flow_chart[1].png
-
+![image](https://github.com/user-attachments/assets/08971802-c0d0-4638-84b0-f3e446a911e8)
 
 # **Work Includes**
 
