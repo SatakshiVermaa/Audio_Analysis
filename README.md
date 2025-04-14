@@ -1,6 +1,5 @@
 # **Speech Analysis Pipeline - Process Flow**
 
-```text
                             ┌───────────────────────────────┐
                             │  Input Audio File (.wav/.mp3) │
                             └───────────────────────────────┘
@@ -54,7 +53,7 @@
 
 
 
-## **Work Includes**
+# **Work Includes**
 
 1. The below code uses the Vosk speech recognition model to convert the audio into text. Additionally, it captures the precise timing of each word's occurrence, which is very useful for verifying pauses and how fast someone is talking.
 
