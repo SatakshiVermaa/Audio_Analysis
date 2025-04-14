@@ -60,11 +60,9 @@
 2. Feature Analysis: The extracted text column namely `transcript` was examined to determine many speech-related features:
    - **Pauses**: Detects prolonged pauses between words (more than 0.5 seconds), which can reflect a person thinking or stalling.
    - **Hesitation Markers**: Detects frequent filler words such as "um," "ah," "like," "you know," "well," "I mean," and "actually."
-             ```
+
            - Filler Sounds: These are the basic sounds used to fill pauses, like "um," "uh," "ah," "er," and "hmm".
-     `
            - Filler Phrases: These are short phrases used to give the speaker time to think or soften a statement, such as "you know," "I mean," "well," and "actually."
-     ``
            - Discourse Markers: These are words that help connect ideas and guide the listener, but can also be used as fillers, like "so," "basically," and "really".
      
    - **Word Repetitions**: Identifies repeating word pairs, which may be an indication of difficulty remembering words or overstressing a point.
