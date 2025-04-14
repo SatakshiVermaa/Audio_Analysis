@@ -1,58 +1,8 @@
 # **Speech Analysis Pipeline - Process Flow**
-```text
-                            ┌───────────────────────────────┐
-                            │  Input Audio File (.wav/.mp3) │
-                            └───────────────────────────────┘
-                                        │
-                                        ▼
-                ┌────────────────────────────────────────────────────────┐
-                │ Audio Preprocessing                                    │
-                │ - Load audio using pydub                               │
-                │ - Convert to mono channel (1-channel)                  │
-                │ - Resample to 16kHz frame rate                         │
-                │ - Export to in-memory buffer (.wav format)             │
-                └────────────────────────────────────────────────────────┘
-                                        │
-                                        ▼
-                ┌────────────────────────────────────────────────────────┐
-                │ Speech Recognition (VOSK KaldiRecognizer)              │
-                │ - Load VOSK model                                      │
-                │ - Transcribe audio in chunks                           │
-                │ - Extract recognized words with timestamps             │
-                │ - Generate full transcript                             │
-                └────────────────────────────────────────────────────────┘
-                                        │
-                                        ▼
-┌───────────────────────────────────────────────────────────────────────────────────────────────┐
-│                               Analyze Speech Features                                         │
-│                                                                                               │
-│ ▸ Pauses: Identify gaps > 0.5s between words                                                  │
-│ ▸ Hesitations: Detect filler words like “um”, “like”, “so”, etc. (regex match)                │
-│ ▸ Repetitions: Find repeated bigrams (e.g., “you know”, “I mean”)                             │
-│ ▸ Speech Rate: Calculate number of words per second                                           │
-│ ▸ Pitch Variability: Use Librosa to extract pitch and measure std deviation                   │
-│ ▸ Lost Words: Sentences with < 5 words using spaCy                                            │
-│ ▸ Incomplete Sentences: Sentences not ending with valid syntax (e.g., no ROOT or punctuation) │
-└───────────────────────────────────────────────────────────────────────────────────────────────┘
-                                        │
-                                        ▼
-                ┌────────────────────────────────────────────────────────┐
-                │ Output Metrics                                         │
-                │ - Final Transcript                                     │
-                │ - Pauses list                                          │
-                │ - Hesitation words                                     │
-                │ - Repeated phrases                                     │
-                │ - Speech rate                                          │
-                │ - Pitch variability                                    │
-                │ - Lost/Incoherent sentences                            │
-                └────────────────────────────────────────────────────────┘
+
+C:\Users\bajar\AppData\Local\Microsoft\Windows\INetCache\IE\02JQTY7D\flow_chart[1].png
 
 
-
-
-
-
-````
 # **Work Includes**
 
 1. The below code uses the Vosk speech recognition model to convert the audio into text. Additionally, it captures the precise timing of each word's occurrence, which is very useful for verifying pauses and how fast someone is talking.
