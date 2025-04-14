@@ -1,6 +1,6 @@
 # **Speech Analysis Pipeline - Process Flow**
 
-![image](https://github.com/user-attachments/assets/08971802-c0d0-4638-84b0-f3e446a911e8)
+![image](https://github.com/user-attachments/assets/1b0a02ee-b5e4-447a-b46d-ed0b665e119a)
 
 # **Work Includes**
 
