@@ -1,0 +1,59 @@
+# Cloud Deployment Instructions
+
+## AWS EC2 Deployment
+
+# 1. Launch an EC2 instance
+# - Use Ubuntu Server 22.04 LTS
+# - t2.micro (free tier)
+# - Security group: allow inbound TCP ports 22 (SSH), 80 (HTTP), 8000 (API)
+
+# 2. SSH into the instance
+chmod 400 your-key.pem
+ssh -i "your-key.pem" ubuntu@<EC2_PUBLIC_IP>
+
+# 3. Install Docker
+sudo apt update
+sudo apt install docker.io -y
+sudo usermod -aG docker $USER
+newgrp docker
+
+# 4. Clone the repository
+git clone https://github.com/your-username/audio-api.git
+cd audio-api
+
+# 5. Build and run the Docker container
+docker build -t audio-api .
+docker run -d -p 80:8000 audio-api
+
+# 6. Test remotely
+# - Swagger UI: http://<EC2_PUBLIC_IP>/docs
+# - Postman:
+#   - Method: POST
+#   - URL: http://<EC2_PUBLIC_IP>/predict-audio/
+#   - Body: form-data → key='file', type='File', upload .wav/.mp3 file
+
+## GCP Cloud Run Deployment
+
+# 1. Install the gcloud CLI
+curl https://sdk.cloud.google.com | bash
+exec -l $SHELL
+gcloud init
+
+# 2. Build and push the Docker image
+gcloud builds submit --tag gcr.io/your-project-id/audio-api
+
+# 3. Deploy to Cloud Run
+gcloud run deploy audio-api \
+  --image gcr.io/your-project-id/audio-api \
+  --platform managed \
+  --region us-central1 \
+  --allow-unauthenticated \
+  --port 8000
+
+# 4. Test remotely
+# - Get the service URL from the deploy output
+# - Swagger UI: https://<SERVICE_URL>/docs
+# - Postman:
+#   - Method: POST
+#   - URL: https://<SERVICE_URL>/predict-audio/
+#   - Body: form-data → key='file', type='File', upload .wav/.mp3 file
